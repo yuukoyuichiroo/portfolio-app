@@ -19,6 +19,27 @@ const staggerContainer = {
   }
 };
 
+const formatDate = (dateStr) => {
+  if (!dateStr || dateStr === 'Present') return dateStr;
+  
+  const parts = dateStr.split(' - ');
+  
+  const format = (d) => {
+    if (!d || d === 'Present') return d;
+    const [year, month] = d.split('-');
+    if (!month) return d;
+    
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return `${months[parseInt(month) - 1]} ${year}`;
+  };
+
+  if (parts.length === 2) {
+    return `${format(parts[0])} — ${format(parts[1])}`;
+  }
+  
+  return format(dateStr);
+};
+
 export default function PortfolioClient({ home, about, experience, projects, contact }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -167,7 +188,7 @@ export default function PortfolioClient({ home, about, experience, projects, con
                 <motion.div key={index} variants={fadeUp} className="glass-panel" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
                     <h3 style={{ fontSize: '1.5rem', margin: 0 }}>{item.role}</h3>
-                    <span style={{ color: 'var(--accent-color)', fontWeight: 600 }}>{item.duration}</span>
+                    <span style={{ color: 'var(--accent-color)', fontWeight: 600 }}>{formatDate(item.duration)}</span>
                   </div>
                   <h4 style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', margin: 0 }}>{item.company}</h4>
                   <p style={{ lineHeight: 1.6 }}>{item.description}</p>
