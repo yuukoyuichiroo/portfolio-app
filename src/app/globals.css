@@ -74,6 +74,12 @@ a {
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
   border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover:not(.nav-bar):not(.nav-mobile-overlay) {
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(99, 102, 241, 0.2);
 }
 
 .glass-button {
