@@ -279,6 +279,13 @@ export default function PortfolioClient({ home, about, experience, projects, con
             </div>
           </motion.div>
         </section>
+
+        {/* Footer */}
+        <footer style={{ padding: '4rem 2rem', textAlign: 'center', borderTop: '1px solid var(--glass-border)', marginTop: '4rem' }}>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+            © 2026 <span style={{ color: '#fff', fontWeight: 600 }}>{home.name}</span>. All rights reserved.
+          </p>
+        </footer>
       </main>
     </>
   );
