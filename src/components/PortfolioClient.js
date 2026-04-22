@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaDownload, FaEnvelope, FaGithub, FaLinkedin, FaBars, FaTimes } from "react-icons/fa";
+import { FaDownload, FaEnvelope, FaGithub, FaLinkedin, FaBars, FaTimes, FaInstagram } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
 import LoadingScreen from "./LoadingScreen";
 
@@ -235,6 +235,9 @@ export default function PortfolioClient({ home, about, experience, projects, con
                   )}
                   {contact.linkedin && (
                     <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="glass-button" style={{ padding: '12px' }}><FaLinkedin size={24} /></a>
+                  )}
+                  {contact.instagram && (
+                    <a href={contact.instagram} target="_blank" rel="noopener noreferrer" className="glass-button" style={{ padding: '12px' }}><FaInstagram size={24} /></a>
                   )}
                 </div>
                 <p style={{ color: 'var(--text-secondary)' }}>Based in {contact.location}</p>

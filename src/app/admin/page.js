@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { FaBars, FaUser, FaBriefcase, FaCode, FaSignOutAlt, FaTimes, FaHome } from 'react-icons/fa';
+import { FaBars, FaUser, FaBriefcase, FaCode, FaSignOutAlt, FaTimes, FaHome, FaInstagram, FaAddressBook } from 'react-icons/fa';
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -10,7 +10,7 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
-  const [activeTab, setActiveTab] = useState('home'); // 'home', 'about', 'experience', 'projects'
+  const [activeTab, setActiveTab] = useState('home'); // 'home', 'about', 'experience', 'projects', 'contact'
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
   const [tagInputs, setTagInputs] = useState({});
 
@@ -60,6 +60,10 @@ export default function AdminDashboard() {
 
   const updateAbout = (field, value) => {
     setData({ ...data, about: { ...data.about, [field]: value } });
+  };
+
+  const updateContact = (field, value) => {
+    setData({ ...data, contact: { ...data.contact, [field]: value } });
   };
 
   const updateExperience = (index, field, value) => {
@@ -293,6 +297,28 @@ export default function AdminDashboard() {
               {isSidebarExpanded && <span style={{ marginLeft: '1rem', fontWeight: activeTab === 'projects' ? '600' : '400' }}>Projects</span>}
             </button>
           </li>
+          <li>
+            <button 
+              onClick={() => setActiveTab('contact')}
+              style={{ 
+                width: '100%', 
+                display: 'flex', 
+                alignItems: 'center',
+                justifyContent: isSidebarExpanded ? 'flex-start' : 'center',
+                padding: '12px 1rem', 
+                background: activeTab === 'contact' ? 'rgba(99, 102, 241, 0.2)' : 'transparent', 
+                border: 'none', 
+                color: activeTab === 'contact' ? '#fff' : 'var(--text-secondary)', 
+                borderRadius: '8px', 
+                cursor: 'pointer', 
+                transition: 'all 0.3s ease' 
+              }}
+              title="Contact"
+            >
+              <FaAddressBook size={20} />
+              {isSidebarExpanded && <span style={{ marginLeft: '1rem', fontWeight: activeTab === 'contact' ? '600' : '400' }}>Contact</span>}
+            </button>
+          </li>
         </ul>
 
         {/* Logout Button */}
@@ -511,6 +537,55 @@ export default function AdminDashboard() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {/* Contact Tab */}
+        {activeTab === 'contact' && (
+          <div className="glass-panel" style={{ padding: '2rem' }}>
+            <h3>Contact & Social Media</h3>
+            <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                <label>
+                  <span style={{ display: 'block', marginBottom: '8px', color: 'var(--text-secondary)' }}>Email Address:</span>
+                  <input className="glass-input" value={data.contact?.email || ''} onChange={e => updateContact('email', e.target.value)} placeholder="your@email.com" />
+                </label>
+                <label>
+                  <span style={{ display: 'block', marginBottom: '8px', color: 'var(--text-secondary)' }}>Location:</span>
+                  <input className="glass-input" value={data.contact?.location || ''} onChange={e => updateContact('location', e.target.value)} placeholder="City, Country" />
+                </label>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                <label>
+                  <span style={{ display: 'block', marginBottom: '8px', color: 'var(--text-secondary)' }}>GitHub URL:</span>
+                  <input className="glass-input" value={data.contact?.github || ''} onChange={e => updateContact('github', e.target.value)} placeholder="https://github.com/..." />
+                </label>
+                <label>
+                  <span style={{ display: 'block', marginBottom: '8px', color: 'var(--text-secondary)' }}>LinkedIn URL:</span>
+                  <input className="glass-input" value={data.contact?.linkedin || ''} onChange={e => updateContact('linkedin', e.target.value)} placeholder="https://linkedin.com/in/..." />
+                </label>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                <label>
+                  <span style={{ display: 'block', marginBottom: '8px', color: 'var(--text-secondary)' }}>Instagram URL:</span>
+                  <input className="glass-input" value={data.contact?.instagram || ''} onChange={e => updateContact('instagram', e.target.value)} placeholder="https://instagram.com/..." />
+                </label>
+                <label>
+                  <span style={{ display: 'block', marginBottom: '8px', color: 'var(--text-secondary)' }}>Google Maps Embed URL (src):</span>
+                  <input 
+                    className="glass-input" 
+                    value={data.contact?.map_url || ''} 
+                    onChange={e => updateContact('map_url', e.target.value)} 
+                    placeholder="https://www.google.com/maps/embed?..."
+                  />
+                </label>
+              </div>
+              <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', padding: '0.5rem', background: 'rgba(0,0,0,0.2)', borderRadius: '8px' }}>
+                💡 <b>Tip for Maps:</b> Go to Google Maps → Share → Embed a map → Copy only the <code>src="..."</code> URL.
+              </span>
             </div>
           </div>
         )}
