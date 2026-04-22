@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
 
 export const metadata = {
   title: "AJH",
-  description: "My own portofolio, created by AI",
+  description: "My own portofolio, personal portfolio website built with Next.js 14, Framer Motion, and React Icons",
 };
 
 export default function RootLayout({ children }) {
