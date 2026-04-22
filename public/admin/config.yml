@@ -1,0 +1,61 @@
+local_backend: true
+backend:
+  name: github
+  repo: your-github-username/your-repo-name # Update this to your repository
+  branch: main
+media_folder: "public/images"
+public_folder: "/images"
+collections:
+  - name: "home"
+    label: "Home Section"
+    file: "src/content/home.json"
+    format: "json"
+    fields:
+      - {label: "Greeting", name: "greeting", widget: "string"}
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Role", name: "role", widget: "string"}
+      - {label: "Bio", name: "bio", widget: "text"}
+  - name: "about"
+    label: "About Me"
+    file: "src/content/about.json"
+    format: "json"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Content", name: "content", widget: "markdown"}
+      - {label: "Skills", name: "skills", widget: "list", field: {label: "Skill", name: "skill", widget: "string"}}
+      - {label: "CV File", name: "cv", widget: "file", required: false}
+  - name: "experience"
+    label: "Work Experience"
+    file: "src/content/experience.json"
+    format: "json"
+    fields:
+      - {label: "Experiences", name: "items", widget: "list", fields: [
+          {label: "Role", name: "role", widget: "string"},
+          {label: "Company", name: "company", widget: "string"},
+          {label: "Duration", name: "duration", widget: "string"},
+          {label: "Description", name: "description", widget: "text"},
+          {label: "Tags", name: "tags", widget: "list", field: {label: "Tag", name: "tag", widget: "string"}}
+        ]}
+  - name: "projects"
+    label: "Projects"
+    folder: "src/content/projects"
+    create: true
+    slug: "{{slug}}"
+    format: "json"
+    extension: "json"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Link", name: "link", widget: "string", required: false}
+      - {label: "Tags", name: "tags", widget: "list", field: {label: "Tag", name: "tag", widget: "string"}}
+  - name: "contact"
+    label: "Contact & Location"
+    file: "src/content/contact.json"
+    format: "json"
+    fields:
+      - {label: "Email", name: "email", widget: "string"}
+      - {label: "Github", name: "github", widget: "string", required: false}
+      - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+      - {label: "Location Name", name: "location", widget: "string"}
+      - {label: "Map URL (Iframe src)", name: "map_url", widget: "string"}

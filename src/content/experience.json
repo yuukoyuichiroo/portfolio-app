@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "role": "Senior Frontend Engineer",
+      "company": "Tech Innovators Inc.",
+      "duration": "2021 - Present",
+      "description": "Lead the frontend development team in building a scalable, high-performance web application using Next.js and React. Improved page load times by 40% and implemented a comprehensive design system.",
+      "tags": ["Next.js", "React", "TypeScript", "Tailwind CSS"]
+    },
+    {
+      "role": "UI/UX Developer",
+      "company": "Creative Agency Co.",
+      "duration": "2018 - 2021",
+      "description": "Designed and developed interactive, accessible, and responsive user interfaces for various client projects. Bridged the gap between design and technical implementation.",
+      "tags": ["JavaScript", "CSS3", "Figma", "Framer Motion"]
+    }
+  ]
+}

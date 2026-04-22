@@ -1,0 +1,5 @@
+{
+  "title": "About Me",
+  "content": "I am a passionate developer with over 5 years of experience in creating dynamic, responsive web applications. I love combining aesthetics with functionality. My expertise lies in front-end frameworks, serverless architectures, and creating beautiful glassmorphic UI designs that engage users.",
+  "skills": ["JavaScript (ES6+)", "React & Next.js", "CSS / Framer Motion", "Node.js", "UI/UX Design", "Git & CI/CD"]
+}
